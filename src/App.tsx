@@ -32,6 +32,9 @@ export function Data() {
             <TableCell>Hates</TableCell>
           </TableRow>
         </TableHead>
+        <TableBody>
+          
+        </TableBody>
       </Table>
     </TableContainer>
   )
