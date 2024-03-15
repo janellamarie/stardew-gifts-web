@@ -1,17 +1,8 @@
-import { makeStyles } from "@material-ui/core/styles";
 import { Button, Grid, Paper, TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from '@mui/material'
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import './App.css'
 
 import villagersJSON from './assets/data/villagers.json' // import villagers data
-
-const useStyles = makeStyles({
-  table: {
-    "& .MuiTableCell-root": {
-      border: "1px solid rgba(224, 224, 224, 1)"
-    }
-  }
-});
 
 export function Header() {
   return (
@@ -40,7 +31,7 @@ function createDataCell(items: string[] | null) {
   }
 
   return (
-    <TableCell size='small' style={{maxWidth:'100px'}}>
+    <TableCell size='small'>
       {cells}
     </TableCell>
   )
@@ -73,18 +64,17 @@ function createDataRow() {
 }
 
 export function DisplayData() {
-  const classes = useStyles();
   return (
     <TableContainer sx={{width:'99%', alignContent:'center', margin:1}} component={Paper}>
-      <Table size='small' className={classes.table}>
+      <Table size='small' stickyHeader>
         <TableHead>
-          <TableRow style={{backgroundColor:'#E5C287'}}>
-            <TableCell>Villager</TableCell>
-            <TableCell>Loves</TableCell>
-            <TableCell>Likes</TableCell>
-            <TableCell>Neutral</TableCell>
-            <TableCell>Dislikes</TableCell>
-            <TableCell>Hates</TableCell>
+          <TableRow>
+            <TableCell variant='head'>Villager</TableCell>
+            <TableCell variant='head'>Loves</TableCell>
+            <TableCell variant='head'>Likes</TableCell>
+            <TableCell variant='head'>Neutral</TableCell>
+            <TableCell variant='head'>Dislikes</TableCell>
+            <TableCell variant='head'>Hates</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
