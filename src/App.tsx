@@ -1,4 +1,4 @@
-import { Button, Grid, Paper, TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from '@mui/material'
+import { Box, Button, Grid, Paper, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, TextField } from '@mui/material'
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import './App.css'
 
@@ -85,12 +85,23 @@ export function DisplayData() {
   )
 }
 
+function SearchTextField() {
+  return (
+    <Box component="form" sx={{margin:1, height:'50px'}}>
+      <TextField id="outlined-basic" label="Search" variant="outlined" fullWidth />
+    </Box>
+  )
+}
+
 export default function Home() {
   return(
     <>
       <Grid container justifyContent="center" alignItems="center">
         <Grid item xs={12}>
           <Header />
+        </Grid>
+        <Grid item xs={12}>
+          <SearchTextField />
         </Grid>
         <Grid item xs={12}>
           <DisplayData />
