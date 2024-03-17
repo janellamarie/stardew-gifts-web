@@ -26,7 +26,7 @@ export default function Home() {
 
   function Content() {
     const [search, setSearch] = React.useState('');
-    const [category, setCategory] = React.useState('');
+    const [category, setCategory] = React.useState('loves');
 
     return(
       <>
