@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction } from 'react'
 
-import { Box, Button, Grid, Paper, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, TextField, Select, MenuItem } from '@mui/material'
+import { Box, Button, Grid, Paper, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, TextField, Select, MenuItem, InputLabel } from '@mui/material'
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import FormatListBulletedRoundedIcon from '@mui/icons-material/FormatListBulletedRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
@@ -31,14 +31,14 @@ export default function Home() {
     return(
       <>
         <Grid item xs={12}>
-          <SearchTextField 
+          <Search 
             search={search} 
             onSearchTextChange={setSearch}
             category={category}
             onCategoryChange={setCategory}
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} sx={{width:'99vw'}}>
           <DisplayData search={search} category={category} />
         </Grid>
       </>  
@@ -73,14 +73,14 @@ export default function Home() {
     )
   }
 
-  function SearchTextField(
+  function Search(
     {search, category, onSearchTextChange, onCategoryChange} : 
     {search : string, category: string, onSearchTextChange : Dispatch<SetStateAction<string>>, onCategoryChange : Dispatch<SetStateAction<string>>}) {
     // TODO: customized input base (https://mui.com/material-ui/react-text-field)
     return (
       <Box 
         component="form" 
-        sx={{margin:1, height:'50px', paddingBottom:3}}
+        sx={{margin:1, height:'8vh', paddingBottom:3}}
       >
           <TextField 
             id="outlined-basic" 
@@ -89,12 +89,15 @@ export default function Home() {
             onChange={(e) => onSearchTextChange(e.target.value)} 
             value={search}
             helperText="Enter an item name"
-            focused />      
+            sx={{paddingRight:1, width:'77em'}} />      
           <Select
             defaultValue={'loves'}
             value={category}
-            onChange={(e) => onCategoryChange(e.target.value)} 
+            label="Category"
+            onChange={(e) => onCategoryChange(e.target.value)}
+            sx={{width:'10%'}} 
           >
+            <InputLabel sx={{padding:1}}>Category</InputLabel>
             <MenuItem value={'loves'}>Loves</MenuItem>
             <MenuItem value={'likes'}>Likes</MenuItem>
             <MenuItem value={'neutral'}>Neutral</MenuItem>
