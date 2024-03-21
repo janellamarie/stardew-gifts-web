@@ -46,6 +46,7 @@ export default function Home() {
   }
 
   function Header() {
+    // TODO: make these buttons actually work
     return (
       <Grid id='nav-bar' container spacing={2} justifyContent="space-between" alignItems="center" sx={{padding:1}}>
         <Grid item xs={8} >
