@@ -17,11 +17,11 @@ export function convertVillagersJSONToVillagerType() {
 
 export function filterVillagers(toSearch: string, category: string) {
   const filtered: Villager[] = [];
-  console.log("Looking for villages with " + toSearch + " as " + category)
+  console.log("Looking for villagers with " + toSearch + " as " + category)
   if(toSearch != '') {
     for(const villager of villagersJSON) {
       if(villager[category as keyof Villager] != null) {
-        if(villager[category as keyof Villager]!.toLocaleString().includes(toSearch)) {
+        if(villager[category as keyof Villager]!.toLocaleString().toLocaleLowerCase().includes(toSearch.toLocaleLowerCase())) {
           if(!filtered.includes(villager)) {
             filtered.push(villager)
           }
