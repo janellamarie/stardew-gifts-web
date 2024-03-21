@@ -15,22 +15,27 @@ export function convertVillagersJSONToVillagerType() {
   return tempVillager
 }
 
+function checkIfExcept(text: string) {
+  if (text.includes("except"))
+    return true
+  return false
+}
+
 export function filterVillagers(toSearch: string, category: string) {
   const filtered: Villager[] = [];
   console.log("Looking for villagers with " + toSearch + " as " + category)
   if(toSearch != '') {
     for(const villager of villagersJSON) {
-      if(villager[category as keyof Villager] != null) {
-        if(villager[category as keyof Villager]!.toLocaleString().toLocaleLowerCase().includes(toSearch.toLocaleLowerCase())) {
-          if(!filtered.includes(villager)) {
-            filtered.push(villager)
-          }
+      if(villager[category as keyof Villager] != null && 
+        villager[category as keyof Villager]!.toLocaleString().toLocaleLowerCase().includes(toSearch.toLocaleLowerCase()) &&
+        !checkIfExcept(villager[category as keyof Villager]!.toLocaleString().toLocaleLowerCase()) &&
+        !filtered.includes(villager)) {
+          filtered.push(villager)
         }
-      } 
+      }
+      console.log("filtered list: " + filtered)
+      return filtered
     }
-    console.log("filtered list: " + filtered)
-    return filtered
-  }
   return convertVillagersJSONToVillagerType();
 }
 
